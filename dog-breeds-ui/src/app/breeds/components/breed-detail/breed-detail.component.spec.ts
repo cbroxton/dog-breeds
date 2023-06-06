@@ -20,4 +20,6 @@ describe('BreedDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // left out any component testing sorry as was spending a bit too long on this :L
 });

@@ -20,6 +20,8 @@ export class BreedsService {
     private errorHandlerService: ErrorHandlerService
   ) {}
 
+  // Might want to cache these requests locally since they're unlikely to change often. Have left out for now though.
+
   public getAllBreeds(): Observable<Breed[]> {
     // normally might have a base http service or perhaps an interceptor or something to ensure the correct
     // base url is used for the environment but just doing this slight bodge here and below to keep it simple
