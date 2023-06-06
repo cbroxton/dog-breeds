@@ -1,3 +1,12 @@
-<div *ngIf="breed">
-  <h1>{{breed.name}}</h1>
+<!-- Would style this nicer with more time -->
+<button class="back-button" routerLink="/">< Back to listing</button>
+<div *ngIf="breed" class="breed-detail-container">
+  <div class="breed-detail">
+    <div>
+      <h1>{{breed.name}}</h1>
+      <p>{{breed.description}}</p>
+      <p *ngIf="breed.additonalInfo"><b>Additional info: </b>{{breed.additonalInfo}}</p>
+    </div>
+    <img [src]="breed.imageUrl">
+  </div>
 </div>
