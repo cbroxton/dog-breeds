@@ -11,6 +11,6 @@ export class BreedsService {
   }
 
   public getBreedById(id: number): Breed | undefined {
-    return this.dataProviderService.breeds.find((breed) => breed.id === id);
+    return this.dataProviderService.breeds.find((breed) => breed.id == id);
   }
 }
