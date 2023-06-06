@@ -1,0 +1,6 @@
+<div *ngIf="breeds" class="breed-list">
+  <div *ngFor="let breed of breeds" class="breed-list-container">
+    <img class="breed-list-image" [src]="breed.imageUrl">
+    <p>{{breed.name}}</p>
+  </div>
+</div>
