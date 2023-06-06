@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Breed } from 'src/models/breeds/breed.model';
+import { Breed } from '../../models/breeds/breed.model';
 import * as breeds from '../../../data/breeds.json';
 
 @Injectable()
