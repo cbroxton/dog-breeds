@@ -1,0 +1,1 @@
+I haven't created a self signed https cert so if chrome is redirecting you from http://localhost:4200 to https://localhost:4200 you may have to go to chrome://net-internals/#hsts and delete policy for "localhost"
