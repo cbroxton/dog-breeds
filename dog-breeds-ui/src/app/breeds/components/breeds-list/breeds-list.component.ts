@@ -8,7 +8,7 @@ import { BreedsService } from '../../services/breeds.service';
   styleUrls: ['./breeds-list.component.scss']
 })
 export class BreedsListComponent implements OnInit {
-  public breeds: Breed[] | undefined;
+  public breeds?: Breed[];
 
   constructor(private breedsService: BreedsService) {}
 

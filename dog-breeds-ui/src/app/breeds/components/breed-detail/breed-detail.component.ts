@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Breed } from '../../models/breed.model';
 import { Location } from '@angular/common';
 import { BreedsService } from '../../services/breeds.service';
@@ -9,7 +9,9 @@ import { BreedsService } from '../../services/breeds.service';
   styleUrls: ['./breed-detail.component.scss']
 })
 export class BreedDetailComponent implements OnInit {
-  public breed: Breed | undefined;
+  @Input() id?: number;
+
+  public breed?: Breed;
 
   constructor(
     private location: Location,
@@ -22,10 +24,10 @@ export class BreedDetailComponent implements OnInit {
     // just prevents an uncessary http call if we can pass the data through from the listing page
     if (routeState?.breed) {
       this.breed = routeState.breed;
-    } else {
+    } else if (this.id) {
       // would normally do an unsubscribe on component destroy but left out here to save time.
       // this one would likely be safe as it's a http call but good practice anyway imo.
-
+      this.breedsService.getBreedById(this.id).subscribe(breed => this.breed = breed);
     }
   }
 }
