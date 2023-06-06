@@ -13,6 +13,8 @@ export class BreedsListComponent implements OnInit {
   constructor(private breedsService: BreedsService) {}
 
   public ngOnInit(): void {
+    // would normally do an unsubscribe on component destroy but left out here to save time.
+    // this one would likely be safe as it's a http call but good practice anyway imo.
     this.breedsService.getAllBreeds().subscribe(breeds => this.breeds = breeds);
   }
 }

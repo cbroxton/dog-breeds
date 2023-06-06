@@ -1,5 +1,5 @@
 <div *ngIf="breeds" class="breed-list">
-  <div *ngFor="let breed of breeds" class="breed-list-container">
+  <div *ngFor="let breed of breeds" class="breed-list-container" routerLink="/breeds/{{breed.id}}" [state]="{ breed: breed }">
     <img class="breed-list-image" [src]="breed.imageUrl">
     <p>{{breed.name}}</p>
   </div>

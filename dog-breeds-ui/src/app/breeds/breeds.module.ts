@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { BreedsRoutingModule } from './breeds-routing.module';
 import { BreedsListComponent } from './components/breeds-list/breeds-list.component';
+import { BreedDetailComponent } from './components/breed-detail/breed-detail.component';
 
 
 @NgModule({
   declarations: [
-    BreedsListComponent
+    BreedsListComponent,
+    BreedDetailComponent
   ],
   imports: [
     CommonModule,
