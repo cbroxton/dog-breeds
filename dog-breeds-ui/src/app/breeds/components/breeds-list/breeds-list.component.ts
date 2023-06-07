@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Breed } from '../../models/breed.model';
-import { BreedsService } from '../../services/breeds.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'breeds-list',
   templateUrl: './breeds-list.component.html',
   styleUrls: ['./breeds-list.component.scss']
 })
-export class BreedsListComponent implements OnInit {
-  public breeds?: Breed[];
+export class BreedsListComponent {
+  public breeds$: Observable<ReadonlyArray<Breed>> = this.store.select(state => state.breeds)
 
-  constructor(private breedsService: BreedsService) {}
-
-  public ngOnInit(): void {
-    // would normally do an unsubscribe on component destroy but left out here to save time.
-    // this one would likely be safe as it's a http call but good practice anyway imo.
-    this.breedsService.getAllBreeds().subscribe(breeds => this.breeds = breeds);
-  }
+  constructor(
+    private store: Store<{ breeds: ReadonlyArray<Breed> }>
+  ) {}
 }

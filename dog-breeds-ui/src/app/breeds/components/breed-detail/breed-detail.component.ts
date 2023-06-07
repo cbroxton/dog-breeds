@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Breed } from '../../models/breed.model';
-import { Location } from '@angular/common';
-import { BreedsService } from '../../services/breeds.service';
+import { Observable, map } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-breed-detail',
@@ -11,23 +11,16 @@ import { BreedsService } from '../../services/breeds.service';
 export class BreedDetailComponent implements OnInit {
   @Input() id?: number;
 
-  public breed?: Breed;
+  public breed$: Observable<Breed | undefined> | undefined;
 
   constructor(
-    private location: Location,
-    private breedsService: BreedsService
+    private store: Store<{ breeds: ReadonlyArray<Breed> }>
   ) {}
 
   ngOnInit(): void {
-    const routeState: any = this.location.getState();
-
-    // just prevents an uncessary http call if we can pass the data through from the listing page
-    if (routeState?.breed) {
-      this.breed = routeState.breed;
-    } else if (this.id) {
-      // would normally do an unsubscribe on component destroy but left out here to save time.
-      // this one would likely be safe as it's a http call but good practice anyway imo.
-      this.breedsService.getBreedById(this.id).subscribe(breed => this.breed = breed);
-    }
+    this.breed$ = this.store.select(state => state.breeds)
+      .pipe(
+        map(breeds => breeds.find(breed => breed.id == this.id))
+      );
   }
 }

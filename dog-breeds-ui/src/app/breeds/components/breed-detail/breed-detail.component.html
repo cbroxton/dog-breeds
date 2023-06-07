@@ -1,6 +1,6 @@
 <!-- Would style this button nicer with more time -->
 <button class="back-button" routerLink="/">< Back to listing</button>
-<div *ngIf="breed" class="breed-detail-container">
+<div *ngIf="breed$ | async as breed" class="breed-detail-container">
   <div class="breed-detail">
     <div>
       <h1>{{breed.name}}</h1>

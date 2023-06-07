@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BreedsModule } from './breeds/breeds.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StoreModule } from '@ngrx/store';
     AppRoutingModule,
     HttpClientModule,
     BreedsModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot(),
+    EffectsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
